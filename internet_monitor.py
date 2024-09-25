@@ -201,6 +201,7 @@ def check_tcp(host : str,
         causes_of_failures : [Exception],
         average_delay : int
     }
+    TODO: implement retry
     """
     result = {}
     
