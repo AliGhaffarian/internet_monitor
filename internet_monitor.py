@@ -7,10 +7,18 @@ import os
 import time
 import errno
 import argparse
+import urllib3
+
+urllib3.disable_warnings()
 
 logger = logging.getLogger()
-logging.basicConfig()
 logger.setLevel(logging.INFO)
+
+stdout_handler = logging.StreamHandler()
+stdout_handler.setFormatter(
+        logging.Formatter('%(asctime)s [%(levelname)s] %(name)s [%(funcName)s]: %(message)s')
+        )
+logger.addHandler(stdout_handler)
 
 SIMPLE_REPR_DELIM="\t"
 SIMPLE_REPR_HEADER=f"server{SIMPLE_REPR_DELIM}\
@@ -133,7 +141,7 @@ def _check_http_or_https(protocol : str,
         
     for _ in range(count):
         try:
-            resp = session.head(url, timeout=timeout)
+            resp = session.head(url, timeout=timeout, verify=False)
             if not resp.ok:
                 #warn
                 pass
