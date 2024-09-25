@@ -11,19 +11,21 @@ if a domain resolution is in BLACK_LIST_IPS then it is assumed it was not resolv
 ### adding servers and protocols to monitor
 the default config file is `CONF_FILE` (servers.yaml)
 
-example config file:
+### example config file:
 ```yaml
-ttp:
+http:
   servers:
     - "google.com"
     - "178.22.122.100"
-		- "timeout": 2
-		- "count": 2
-		- "retries": 1
+  timeout: 2
+  retries: 1
+  count: 3
 https:
   servers:
     - "google.com"
-
+icmp:
+  servers:
+    - "8.8.8.8"
 tcp:
   servers:
     - "178.22.122.100:53"
