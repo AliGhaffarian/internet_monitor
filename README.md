@@ -23,9 +23,6 @@ http:
 https:
   servers:
     - "google.com"
-icmp:
-  servers:
-    - "8.8.8.8"
 tcp:
   servers:
     - "178.22.122.100:53"
